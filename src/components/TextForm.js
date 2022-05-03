@@ -12,13 +12,22 @@ export default function TextForm(props) {
 
         setText(text.toLowerCase());
     }
+    const handleCamelClick = (e) => {
+
+        setText(text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()));
+    }
+
+    const handleCopy = (e) => {
+
+        navigator.clipboard.writeText(text);
+    }
 
     const handleOnChange = (e) => {
         setText(e.target.value);
     }
 
 
-    const [text, setText] = useState('Enter Text Here3');
+    const [text, setText] = useState('');
 
 
 
@@ -32,6 +41,8 @@ export default function TextForm(props) {
                 </div>
                 <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
                 <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to lowercase</button>
+                <button className="btn btn-primary mx-2" onClick={handleCamelClick}>Convert to CamelCase</button>
+                <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
 
             </div>
             <div className="container my-3">
