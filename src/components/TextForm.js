@@ -6,20 +6,24 @@ export default function TextForm(props) {
     const handleUpClick = (e) => {
 
         setText(text.toUpperCase());
+        props.showAlert("Text has been converted to UPPERCASE", "success");
     }
 
     const handleLowClick = (e) => {
 
         setText(text.toLowerCase());
+        props.showAlert("Text has been converted to lower case", "success");
     }
     const handleCamelClick = (e) => {
 
         setText(text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase()));
+        props.showAlert("Camel Case Has Been Enabled", "success");
     }
 
     const handleCopy = (e) => {
 
         navigator.clipboard.writeText(text);
+        props.showAlert("Copied to Clipboard", "success");
     }
 
     const handleOnChange = (e) => {
@@ -52,7 +56,7 @@ export default function TextForm(props) {
 
             <div className="container my-3" style={{color : props.mode==='light'?'black':'white'}}>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length>0?text:"Enter Text To Preview"}</p>
             </div>
         </>
     )
