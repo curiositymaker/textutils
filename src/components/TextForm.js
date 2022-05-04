@@ -33,11 +33,10 @@ export default function TextForm(props) {
 
     return (
         <>
-
-            <div className='container'>
+            <div className='container' style={{color : props.mode==='light'?'black':'white'}}>
                 <div className="mb-3">
                     <h2>{props.heading}</h2>
-                    <textarea className="form-control my-3" id="myBox" rows="8" value={text} onChange={handleOnChange}></textarea>
+                    <textarea className="form-control my-3" id="myBox" rows="8" value={text} onChange={handleOnChange} style={{backgroundColor : props.mode==='light'?'white':'grey',color : props.mode==='light'?'black':'white'}}></textarea>
                 </div>
                 <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
                 <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to lowercase</button>
@@ -45,13 +44,13 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
 
             </div>
-            <div className="container my-3">
+            <div className="container my-3" style={{color : props.mode==='light'?'black':'white'}}>
                 <h1>Yout Text Summary</h1>
                 <p>{text.split(" ").length} words, and {text.length} charecters</p>
                 <p>{text.split(" ").length * 0.008} Minutes to read.</p>
             </div>
 
-            <div className="container my-3">
+            <div className="container my-3" style={{color : props.mode==='light'?'black':'white'}}>
                 <h2>Preview</h2>
                 <p>{text}</p>
             </div>
